@@ -27,9 +27,32 @@ class MachineModel extends CI_Model{
 		$query = $this->db->get();
 		return $query->result_array();
 
-		//$query = $this->db->get('validated_parts');
-		//return $query->result_array();
 	}
+
+
+
+
+
+	public function get_single_machine($id){
+
+		$data_array = array(
+			'COL9' => $id,
+		);
+
+		$this->db->select('*');
+		$this->db->from('validated_parts');
+		$this->db->where($data_array, TRUE);
+
+		$query = $this->db->get();
+		return $query->result_array();
+
+	}
+
+
+
+
+
+
 
 
 

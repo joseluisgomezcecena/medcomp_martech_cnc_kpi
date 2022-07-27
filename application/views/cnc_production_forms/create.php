@@ -35,10 +35,12 @@
 
 				<?php echo form_open()?>
 
+				<input type="hidden" name="machine" value="<?= $cnc ?>">
+
 				<div class="row mt-5">
 
 					<div class="col-3">
-						<label for="">Part Number</label>
+						<label for="">Part Number for <?= $cnc ?></label>
 						<select name="pn" id="pn" class="form-control" onchange="searchnow()" required>
 							<option value="">Select Part Number</option>
 							<?php foreach ($parts as $part): ?>
@@ -68,7 +70,7 @@
 
 					<div class="col-3 mt-5">
 						<label for="">Optimum Value</label>
-						<input type="number" id="goal" min="0" class="form-control" readonly>
+						<input type="number" id="goal" name="goal" min="0" class="form-control" readonly>
 					</div>
 
 					<div class="col-12 mt-5">

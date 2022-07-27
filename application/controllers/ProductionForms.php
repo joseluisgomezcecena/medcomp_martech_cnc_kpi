@@ -8,6 +8,7 @@ class ProductionForms extends CI_Controller
 		$data['title'] = "Production Forms";
 		$data['machines'] = $this->MachineModel->get_machines();
 
+
 		//load header, page & footer
 		$this->load->view('templates/header');
 		$this->load->view('cnc_production_forms/index', $data); //loading page and data
@@ -15,11 +16,13 @@ class ProductionForms extends CI_Controller
 	}
 
 
+
+
 	public function create($id = NULL){
 		$data['title'] = "Create Production Form";
 		$data['machines'] = $this->MachineModel->get_machines();
 		$data['parts'] = $this->MachineModel->get_validated_parts($id);
-
+		$data['cnc'] = $id;
 
 		$this->form_validation->set_rules('pn', 'Part Number', 'required');
 		$this->form_validation->set_rules('start', 'Start Time', 'required');
