@@ -75,72 +75,6 @@
 
 
 				<?php echo form_close()?>
-				<!--
-				<div  class="table-responsive">
-					<table style="width: 100%;" id="status-list" class="table">
-						<thead>
-						<tr>
-							<th>ID</th>
-							<th>Sup</th>
-							<th>Revision</th>
-							<th>Ubicacion</th>
-							<th>Maquina</th>
-							<th>Parte</th>
-							<th>Status</th>
-							<th>Tiempo de espera</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php
-						foreach ($requests as $request):
-							?>
-
-							<tr>
-								<td><?php echo $request['request_id'] ?></td>
-								<td><?php echo $request['boy_sup'] ?></td>
-								<td><?php echo $request['revision'] ?></td>
-								<td><?php echo $request['location'] ?></td>
-								<td><?php echo $request['maquina'] ?></td>
-								<td><?php echo $request['partno'] ?><br><?php echo $request['partno_descrip'] ?></td>
-								<td>
-									<?php
-
-									if($request['status']==0)
-									{
-										$status_text = "En espera";
-										$status_color = "text-danger";
-									}
-									elseif($request['status']==1)
-									{
-										$status_text = "Armado";
-										$status_color = "text-warning";
-									}
-									elseif($request['status']==2)
-									{
-										$status_text = "Entregado";
-										$status_color = "text-success";
-									}
-									?>
-									<b class="<?php echo $status_color ?>"><?php echo $status_text ?></b>
-								</td>
-								<th>
-									<?php
-									$t1 = strtotime($request['created_at']);
-									$t2 = strtotime(date("Y-m-d H:i:s"));
-									$diff = $t2 - $t1;
-									$hours = $diff / ( 60 * 60 );
-									echo round($hours,2);
-									?>
-									 Hr(s)
-								</th>
-							</tr>
-
-						<?php endforeach; ?>
-						</tbody>
-
-					</table>
-				</div>
-				-->
 
 			</div>
 		</div>
@@ -174,22 +108,13 @@
 			data: {plant_id: plant_id},
 			dataType: 'json',
 			success: function (response) {
-
 				$.each(response, function (index, data) {
 
-					//$(".groupclass:first").val(data['insert_id']);
 					alert("Parts Per Hour: "+data['COL4']);
 					$('#pph').val(data['COL4']);
-//					$('#insert_group_'+param).val(data['insert_group']);
-//					$('#insert_description_'+param).val(data['insert_description']);
-
-					//$('#linea_id').append('<option value="' + data['linea_id'] + '">' + data['linea_nombre'] + '</option>');
 				});
-
 			}
 		});
-
-
 	}
 
 
@@ -197,6 +122,8 @@
 	document.querySelector("#end-time").addEventListener("change", myFunction);
 
 	function myFunction() {
+
+		var pph = $('#pph').val();
 
 		//value start
 		var start = Date.parse($("input#start-time").val()); //get timestamp
@@ -208,7 +135,7 @@
 		goal = NaN;
 		if (start < end) {
 			totalHours = Math.floor((end - start) / 1000 / 60 / 60 ); //milliseconds: /1000 / 60 / 60
-			goal = totalHours*22;
+			goal = totalHours*pph;
 		}
 
 		$("#total-hours").val(totalHours);
