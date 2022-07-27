@@ -52,23 +52,27 @@
 					</div>
 					<div class="col-3">
 						<label for="">From</label>
-						<input id="start-time" type="datetime-local" class="form-control">
+						<input id="start-time" name="start" type="datetime-local" class="form-control">
 					</div>
 					<div class="col-3">
 						<label for="">To</label>
-						<input id="end-time" type="datetime-local" class="form-control">
+						<input id="end-time"  name="end" type="datetime-local" class="form-control">
 					</div>
 
 					<input type="hidden" id="total-hours" class="form-control">
 
 					<div class="col-3 mt-5">
 						<label for="">Produced Parts</label>
-						<input type="number" min="0" class="form-control">
+						<input type="number" min="0" name="quantity" class="form-control">
 					</div>
 
 					<div class="col-3 mt-5">
 						<label for="">Optimum Value</label>
 						<input type="number" id="goal" min="0" class="form-control" readonly>
+					</div>
+
+					<div class="col-12 mt-5">
+						<input type="submit" class="btn btn-outline-primary" value="Save Production">
 					</div>
 
 				</div>
@@ -133,9 +137,16 @@
 
 		totalHours = NaN;
 		goal = NaN;
+
+		//miliseconds = end - start;
+		//alert(miliseconds);
 		if (start < end) {
-			totalHours = Math.floor((end - start) / 1000 / 60 / 60 ); //milliseconds: /1000 / 60 / 60
+
+
+			totalHours = Math.round((end - start) / 1000 / 60 / 60 ); //milliseconds: /1000 / 60 / 60
 			goal = totalHours*pph;
+		}else{
+			alert("Start date must be before end date. Check your dates.");
 		}
 
 		$("#total-hours").val(totalHours);
