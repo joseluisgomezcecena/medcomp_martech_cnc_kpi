@@ -34,6 +34,18 @@
 				<h3 class="box-title">CNC Production Registry</h3>
 
 
+				<?php if($this->session->flashdata('created')): ?>
+
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong class="uppercase"><bdi>Success!</bdi></strong>
+						Your data has been saved, thank you.
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+					</div>
+
+				<?php endif; ?>
+
+
 				<div class="row mt-5">
 
 					<?php

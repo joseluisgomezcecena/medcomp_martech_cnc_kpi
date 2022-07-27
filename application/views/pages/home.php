@@ -31,120 +31,44 @@
 
 		<div class="col-lg-12">
 			<div class="white-box analytics-info">
-				<h3 class="box-title">CNC Production Registry</h3>
-
-				<?php echo form_open()?>
+				<h3 class="box-title">CNC Production Registry Menu</h3>
 
 				<div class="row mt-5">
-					<div class="col-3">
-						<label for="">CNC Machine</label>
-						<select name="machine" id="machine" class="form-control">
-							<option value="">Select Machine</option>
-							<?php foreach ($machines as $machine): ?>
-								<option value="<?php echo $machine['machine_id'] ?>"><?php echo $machine['machine_name'] ?></option>
-							<?php endforeach ?>
-						</select>
-					</div>
-					<div class="col-3">
-						<label for="">Part Number</label>
-						<select name="pn" id="pn" class="form-control">
-							<option value="">Select Part Number</option>
-							<option value="">MP0050</option>
-							<option value="">MP0051</option>
-							<option value="">MP0066</option>
-						</select>
-					</div>
-					<div class="col-3">
-						<label for="">From</label>
-						<input id="start-time" type="datetime-local" class="form-control">
-					</div>
-					<div class="col-3">
-						<label for="">To</label>
-						<input id="end-time" type="datetime-local" class="form-control">
+
+					<div class="col-lg-4">
+						<div class="col-lg-12 card shadow border">
+							<div class="card-body">
+								<h3 class="card-title text-center">Production</h3>
+								<p class="mt-5 mb-5">Click on the button to register production for a machine.</p>
+								<a class="btn btn-outline-primary text-center" href="<?php echo base_url() ?>register_production">Register Production</a>
+							</div>
+						</div>
 					</div>
 
-					<input type="hidden" id="total-hours" class="form-control">
 
-					<div class="col-3 mt-5">
-						<label for="">Produced Parts</label>
-						<input type="number" min="0" class="form-control">
+					<div class="col-lg-4">
+						<div class="col-lg-12 card shadow border">
+							<div class="card-body">
+								<h3 class="card-title text-center">Downtimes</h3>
+								<p class="mt-5 mb-5">Click on the button to register downtime for a machine.</p>
+								<a class="btn btn-outline-danger text-center" href="<?php echo base_url() ?>register_downtime">Register Downtime</a>
+							</div>
+						</div>
 					</div>
 
-					<div class="col-3 mt-5">
-						<label for="">Optimum Value</label>
-						<input type="number" id="goal" min="0" class="form-control" readonly>
+
+
+					<div class="col-lg-4">
+						<div class="col-lg-12 card shadow border">
+							<div class="card-body">
+								<h3 class="card-title text-center">Reports</h3>
+								<p class="mt-5 mb-5">Click on the button to generate reports.</p>
+								<a class="btn btn-outline-success text-center" href="<?php echo base_url() ?>reports">Register Downtime</a>
+							</div>
+						</div>
 					</div>
 
 				</div>
-
-
-				<?php echo form_close()?>
-				<!--
-				<div  class="table-responsive">
-					<table style="width: 100%;" id="status-list" class="table">
-						<thead>
-						<tr>
-							<th>ID</th>
-							<th>Sup</th>
-							<th>Revision</th>
-							<th>Ubicacion</th>
-							<th>Maquina</th>
-							<th>Parte</th>
-							<th>Status</th>
-							<th>Tiempo de espera</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php
-						foreach ($requests as $request):
-							?>
-
-							<tr>
-								<td><?php echo $request['request_id'] ?></td>
-								<td><?php echo $request['boy_sup'] ?></td>
-								<td><?php echo $request['revision'] ?></td>
-								<td><?php echo $request['location'] ?></td>
-								<td><?php echo $request['maquina'] ?></td>
-								<td><?php echo $request['partno'] ?><br><?php echo $request['partno_descrip'] ?></td>
-								<td>
-									<?php
-
-									if($request['status']==0)
-									{
-										$status_text = "En espera";
-										$status_color = "text-danger";
-									}
-									elseif($request['status']==1)
-									{
-										$status_text = "Armado";
-										$status_color = "text-warning";
-									}
-									elseif($request['status']==2)
-									{
-										$status_text = "Entregado";
-										$status_color = "text-success";
-									}
-									?>
-									<b class="<?php echo $status_color ?>"><?php echo $status_text ?></b>
-								</td>
-								<th>
-									<?php
-									$t1 = strtotime($request['created_at']);
-									$t2 = strtotime(date("Y-m-d H:i:s"));
-									$diff = $t2 - $t1;
-									$hours = $diff / ( 60 * 60 );
-									echo round($hours,2);
-									?>
-									 Hr(s)
-								</th>
-							</tr>
-
-						<?php endforeach; ?>
-						</tbody>
-
-					</table>
-				</div>
-				-->
 
 			</div>
 		</div>

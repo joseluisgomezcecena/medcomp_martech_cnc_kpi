@@ -50,7 +50,7 @@ class ProductionForms extends CI_Controller
 			//session message
 			$this->session->set_flashdata('created', 'Production saved.');
 
-			redirect(base_url());
+			redirect(base_url() . 'register_production');
 		}
 	}
 

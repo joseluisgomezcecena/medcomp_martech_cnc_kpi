@@ -7,6 +7,56 @@ class ReportModel extends CI_Model{
 		$this->load->database();
 	}
 
+
+	public function get_records()
+	{
+
+		if($this->input->post('date_start')){
+
+			$this->db->where('start >=', $this->input->post('date_start'));
+			$this->db->where('end <=', $this->input->post('date_end'));
+		}
+
+		$this->db->select('*');
+		$this->db->from('records');
+		$this->db->order_by('id', 'ASC');
+
+
+		$query = $this->db->get();
+		return $query->result_array();
+
+	}
+
+
+
+
+
+
+	public function get_totals()
+	{
+
+		if($this->input->post('date_start')){
+
+			$this->db->where('start >=', $this->input->post('date_start'));
+			$this->db->where('end <=', $this->input->post('date_end'));
+		}
+
+		$this->db->select('*');
+		$this->db->select_sum('goal');
+		$this->db->select_sum('quantity');
+		$this->db->from('records');
+		$this->db->order_by('start', 'ASC');
+		$query = $this->db->get();
+
+		return $query->row_array();
+
+	}
+
+
+
+
+
+
 	public function get_completed_requests()
 	{
 		//$this->db->select('*');

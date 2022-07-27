@@ -4,11 +4,17 @@ class Reports extends CI_Controller{
 
 	public function index()
 	{
-		$data['title'] = "Reportes";
+		$data['title'] = "Reports";
+		$data['records'] = $this->ReportModel->get_records();
+		//$data['groups'] = $this->ReportModel->get_groups();
+		$data['totals'] = $this->ReportModel->get_totals();
+
 
 		$this->load->view('templates/header');
 		$this->load->view('reports/index', $data); //loading page and data
 		$this->load->view('templates/footer');
+
+
 	}
 
 
