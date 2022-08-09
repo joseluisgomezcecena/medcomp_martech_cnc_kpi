@@ -19,7 +19,7 @@
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
 	<link href="<?php echo base_url() ?>assets/css/style.min.css" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,8 +50,111 @@
 			text-transform: uppercase;
 		}
 
+		table{
+			text-transform: uppercase;
+			font-size: 12px !important;
+		}
+
+		table tbody tr{
+			font-size: 12px !important;
+		}
+
+		table thead tr th{
+			font-size: 12px !important;
+			font-weight: bold !important;
+			color: #0d6efd !important;
+		}
+
+		input{
+			text-transform: uppercase;
+		}
+
+		/* Small screen devices (600px and above) */
+		@media only screen and (min-width: 600px) {
+			.tablet{
+				display: none;
+			}
+		}
+
+		/* Medium screen devices (768px and above) */
+		@media only screen and (min-width: 882px) {
+			.tablet{
+				display: block;
+			}
+		}
+
+		.circles{
+			height: 35px;
+			width: 35px;
+			background-color: #2c92ef;
+			border-radius: 50%;
+			display: inline-block;
+			color: #252525;
+		}
 
 
+		.paginate_button {
+			background-color: #707cd2 !important;
+			color: #fff !important;
+			box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%) !important;
+			display: inline-block;
+			font-weight: 400;
+			line-height: 1.5;
+			color: #313131;
+			text-align: center;
+			text-decoration: none;
+			vertical-align: middle;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			background-color: transparent;
+			border: 1px solid transparent;
+			padding: 0.375rem 0.75rem !important;
+			margin: 5px !important;
+			font-size: 0.875rem;
+			border-radius: 2px;
+			-webkit-transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+			transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+			-o-transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+			transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+			transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+		}
+
+		#entries-list_info{
+			font-weight: bolder;
+			color: #707cd2 !important;
+		}
+
+		button.dt-button, div.dt-button, a.dt-button, input.dt-button{
+			background-color: #707cd2 !important;
+			color: #fff !important;
+			box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%) !important;
+			display: inline-block;
+			font-weight: 400;
+			line-height: 1.5;
+			color: #313131;
+			text-align: center;
+			text-decoration: none;
+			vertical-align: middle;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			background-color: transparent;
+			border: 1px solid transparent;
+			padding: 0.375rem 0.75rem !important;
+			margin: 5px !important;
+			font-size: 0.875rem;
+			border-radius: 2px;
+			-webkit-transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+			transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+			-o-transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+			transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+			transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+		}
 	</style>
 
 </head>

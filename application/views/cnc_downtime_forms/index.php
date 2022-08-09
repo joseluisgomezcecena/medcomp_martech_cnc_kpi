@@ -1,4 +1,4 @@
-<div class="page-breadcrumb text-white bg-primary">
+<div class="page-breadcrumb bg-danger text-white">
 	<div class="row align-items-center">
 		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
 			<h4 class="page-title">Select Machine</h4>
@@ -31,7 +31,7 @@
 
 		<div class="col-lg-12">
 			<div class="white-box analytics-info">
-				<h3 class="box-title">CNC Production Registry</h3>
+				<h3 class="box-title">CNC Downtime Registry</h3>
 
 
 				<?php if($this->session->flashdata('created')): ?>
@@ -56,8 +56,8 @@
 							<div class="col-lg-12 card shadow border">
 								<div class="card-body">
 									<h3 class="card-title text-center"><?php echo $machine['machine_name'] ?></h3>
-									<p class="mt-5 mb-5">Click on the button to register production for this machine.</p>
-									<a class="btn btn-outline-primary text-center" href="<?php echo base_url() ?>entry_form/<?php echo $machine['machine_name'] ?>">Register Production</a>
+									<p class="mt-5 mb-5">Click on the button to register downtime for this machine.</p>
+									<a class="btn btn-outline-danger text-center" href="<?php echo base_url() ?>downtime_form/<?php echo $machine['machine_name'] ?>">Register Downtime</a>
 								</div>
 							</div>
 						</div>

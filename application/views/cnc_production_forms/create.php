@@ -33,7 +33,7 @@
 			<div class="white-box analytics-info">
 				<h3 class="box-title">CNC Production Registry</h3>
 
-				<?php echo form_open()?>
+				<?php echo form_open(base_url() . 'entry_form/' . $cnc)?>
 
 				<input type="hidden" name="machine" value="<?= $cnc ?>">
 
