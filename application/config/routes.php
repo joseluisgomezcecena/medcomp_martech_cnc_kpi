@@ -14,6 +14,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['register_production'] = 'productionforms/index';
 $route['entry_form/(:any)'] = 'productionforms/create/$1';
 
+$route['register_downtime'] = 'downtimeforms/index';
+$route['downtime_form/(:any)'] = 'downtimeforms/create/$1';
+
+
 $route['request/new'] = 'forms/create';
 $route['request/sup/(:any)'] = 'forms/request/$1';
 
