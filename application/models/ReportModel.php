@@ -13,16 +13,23 @@ class ReportModel extends CI_Model{
 
 		if($this->input->post('date_start')){
 
-			$this->db->where('start >=', $this->input->post('date_start'));
-			$this->db->where('end <=', $this->input->post('date_end'));
+			$start = $this->input->post('date_start') . " 00:00:00";
+			$end = $this->input->post('date_end') . " 23:59:59";
+
+			$this->db->where('start >=', $start);
+			$this->db->where('end <=', $end);
 		}
 
 		$this->db->select('*');
 		$this->db->from('records');
-		$this->db->order_by('id', 'ASC');
+		$this->db->order_by('start', 'ASC');
 
 
 		$query = $this->db->get();
+
+		//$last_query = $this->db->last_query();
+		//print_r($last_query);
+
 		return $query->result_array();
 
 	}
@@ -35,10 +42,21 @@ class ReportModel extends CI_Model{
 	public function get_totals()
 	{
 
+		/*
 		if($this->input->post('date_start')){
 
 			$this->db->where('start >=', $this->input->post('date_start'));
 			$this->db->where('end <=', $this->input->post('date_end'));
+		}
+		*/
+
+		if($this->input->post('date_start')){
+
+			$start = $this->input->post('date_start') . " 00:00:00";
+			$end = $this->input->post('date_end') . " 23:59:59";
+
+			$this->db->where('start >=', $start);
+			$this->db->where('end <=', $end);
 		}
 
 		$this->db->select('*');

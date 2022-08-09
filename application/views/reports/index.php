@@ -24,7 +24,7 @@
 
 		<div class="col-lg-12">
 			<div class="white-box analytics-info">
-				<h3 class="box-title">Busqueda!!</h3>
+				<h3 class="box-title">Search </h3>
 				<?php echo form_open( base_url() . 'reports/index', array('class' => 'form-horizontal')); ?>
 				<div class="row">
 					<div class="col-lg-4">
@@ -92,7 +92,13 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<?php
-								echo $percent =  round(($totals['quantity']/$totals['goal'])*100, 2);
+								if($totals['goal']== 0)
+								{
+									echo $percent = 0;
+								}else
+								{
+									echo $percent =  round(($totals['quantity']/$totals['goal'])*100, 2);
+								}
 								?>
 								%
 							</div>
@@ -175,6 +181,7 @@
 
 		$('#entries-list').DataTable( {
 			dom: 'Bfrtip',
+			'bSort': false,
 			buttons: [
 				'copyHtml5',
 				'excelHtml5',
