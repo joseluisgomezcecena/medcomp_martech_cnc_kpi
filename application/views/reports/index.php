@@ -126,14 +126,20 @@
 					<div class="col-lg-3">
 						<h3 class="box-title text-primary">Machine % Usage</h3>
 						<?php
-							echo $totals['quantity'];
+							//echo $totals['quantity'];
 
-							/*
-							$t1 = strtotime( '2006-04-14 11:30:00' );
-							$t2 = strtotime( '2006-04-12 12:30:00' );
-							$diff = $t1 - $t2;
-							$hours = $diff / ( 60 * 60 );
-							*/
+							if($downtime_total== 0)
+							{
+								echo "N/A";
+							}
+							else
+							{
+								echo $total_usage;
+								echo "/";
+								echo $downtime_total;
+								echo " = ";
+								echo round($total_usage/$downtime_total, 2) . "%";
+							}
 						?>
 					</div>
 
@@ -175,6 +181,62 @@
 
 					</table>
 				</div>
+
+
+
+
+
+
+
+				<h3 class="box-title mb-5">Downtime Records</h3>
+
+				<div class="table-responsive">
+
+					<table style="width: 100%" id="downtime-list" class="table">
+						<thead>
+						<th>Machine</th>
+						<th>Started</th>
+						<th>Ended</th>
+						<th>Hours</th>
+						</thead>
+						<tbody>
+						<?php
+						foreach ($downtime_records as $drecord):
+							?>
+
+							<tr>
+								<td><?php echo $drecord['machine_downtime'] ?></td>
+								<td><?php echo $drecord['downtime_start'] ?></td>
+								<td><?php echo $drecord['downtime_end'] ?></td>
+								<td>
+									<?php
+									$start = strtotime($drecord['downtime_start']);
+									$end = strtotime($drecord['downtime_end']);
+									$diff = $end - $start;
+									$hours = $diff / ( 60 * 60 );
+									echo round($hours, 2);
+									?>
+								</td>
+							</tr>
+
+						<?php endforeach; ?>
+						</tbody>
+
+					</table>
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 			</div>
 		</div>
 	</div>
@@ -207,6 +269,18 @@
 	 */
 
 		$('#entries-list').DataTable( {
+			dom: 'Bfrtip',
+			'bSort': false,
+			buttons: [
+				'copyHtml5',
+				'excelHtml5',
+				'csvHtml5',
+				'pdfHtml5'
+			]
+		} );
+
+
+		$('#downtime-list').DataTable( {
 			dom: 'Bfrtip',
 			'bSort': false,
 			buttons: [
