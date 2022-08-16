@@ -11,13 +11,22 @@ class ReportModel extends CI_Model{
 	public function get_records()
 	{
 
-		if($this->input->post('date_start')){
+		if($this->input->post('date_start'))
+		{
 
 			$start = $this->input->post('date_start') . " 00:00:00";
 			$end = $this->input->post('date_end') . " 23:59:59";
 
 			$this->db->where('start >=', $start);
 			$this->db->where('end <=', $end);
+		}
+		else
+		{
+			$today_start = date('Y-m-d') . " 00:00:00";
+			$today_end = date('Y-m-d') . " 23:59:59";
+
+			$this->db->where('start >=', $today_start);
+			$this->db->where('end <=', $today_end);
 		}
 
 		$this->db->select('*');
@@ -26,9 +35,6 @@ class ReportModel extends CI_Model{
 
 
 		$query = $this->db->get();
-
-		//$last_query = $this->db->last_query();
-		//print_r($last_query);
 
 		return $query->result_array();
 
@@ -50,13 +56,22 @@ class ReportModel extends CI_Model{
 		}
 		*/
 
-		if($this->input->post('date_start')){
+		if($this->input->post('date_start'))
+		{
 
 			$start = $this->input->post('date_start') . " 00:00:00";
 			$end = $this->input->post('date_end') . " 23:59:59";
 
 			$this->db->where('start >=', $start);
 			$this->db->where('end <=', $end);
+		}
+		else
+		{
+			$today_start = date('Y-m-d') . " 00:00:00";
+			$today_end = date('Y-m-d') . " 23:59:59";
+
+			$this->db->where('start >=', $today_start);
+			$this->db->where('end <=', $today_end);
 		}
 
 		$this->db->select('*');
@@ -72,22 +87,40 @@ class ReportModel extends CI_Model{
 
 
 
-
-
-
-	public function get_completed_requests()
+	public function get_total_usage()
 	{
-		//$this->db->select('*');
-		$this->db->select('request_id, sup, location, sup_requests.created_at, ready_at, pickup_by, delivered_by, status, id, partno, partno_descrip, boy_sup, maquina, resina, revision');
-		$this->db->from('sup_requests');
-		$this->db->join('sup', 'sup.id = sup_requests.sup', 'left');
-		$this->db->where('status','=2');
-		$query = $this->db->get();
+		if($this->input->post('date_start'))
+		{
 
-		//#$lastone = $this->db->last_query();
-		//#print_r($lastone);
+			$diff = 1;
+			$total_hours = 10 * $diff;
 
-		return $query->result_array();
 
+
+			$start = $this->input->post('date_start') . " 00:00:00";
+			$end = $this->input->post('date_end') . " 23:59:59";
+
+			$this->db->where('start >=', $start);
+			$this->db->where('end <=', $end);
+		}
+		else
+		{
+
+			$diff = 1;
+			$total_hours = 10;
+
+			$today_start = date('Y-m-d') . " 00:00:00";
+			$today_end = date('Y-m-d') . " 23:59:59";
+
+			$this->db->where('start >=', $today_start);
+			$this->db->where('end <=', $today_end);
+		}
+
+		//return $query->row_array();
 	}
+
+
+
 }
+
+//reasons for downtime

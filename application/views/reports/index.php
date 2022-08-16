@@ -23,6 +23,15 @@
 	<div class="row justify-content-center">
 
 		<div class="col-lg-12">
+			<?php if($show == true): ?>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				<strong class="uppercase"><bdi>IMPORTANT!</bdi></strong>
+				If no date range is selected, the report will show all records for Today <?php echo date("m/d/Y") ?> only.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+			</div>
+			<?php endif; ?>
+
 			<div class="white-box analytics-info">
 				<h3 class="box-title">Search </h3>
 				<?php echo form_open( base_url() . 'reports/index', array('class' => 'form-horizontal')); ?>
@@ -70,7 +79,7 @@
 		<div class="col-lg-12">
 			<div class="white-box analytics-info">
 
-				<h3 class="box-title">OverAll</h3>
+				<h3 class="box-title">OverAll Production</h3>
 
 				<div class="row mb-5">
 					<div class="col-lg-3">
@@ -105,15 +114,33 @@
 							<div class="col-lg-6">
 								<?php
 								if($percent >= 99){
-									echo "<img src='".base_url()."assets/img/yay.gif' width='100'>";
+									echo "<img style='margin-top:-55px;' src='".base_url()."assets/img/yay.gif' width='100'>";
 								}
 								?>
 							</div>
 						</div>
 
-
 					</div>
+
+
+					<div class="col-lg-3">
+						<h3 class="box-title text-primary">Machine % Usage</h3>
+						<?php
+							echo $totals['quantity'];
+
+							/*
+							$t1 = strtotime( '2006-04-14 11:30:00' );
+							$t2 = strtotime( '2006-04-12 12:30:00' );
+							$diff = $t1 - $t2;
+							$hours = $diff / ( 60 * 60 );
+							*/
+						?>
+					</div>
+
 				</div>
+
+
+
 
 
 				<h3 class="box-title">Production Records</h3>
