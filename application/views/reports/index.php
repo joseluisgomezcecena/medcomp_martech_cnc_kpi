@@ -134,11 +134,11 @@
 							}
 							else
 							{
-								echo $downtime_total;
+								echo $total_usage . "-" . $downtime_total;
 								echo "/";
 								echo $total_usage;
 								echo " = ";
-								echo round(($downtime_total/$total_usage)*100, 2) . "%";
+								echo round((($total_usage - $downtime_total)/$total_usage)*100, 2) . "%";
 							}
 						?>
 					</div>
