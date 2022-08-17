@@ -51,7 +51,19 @@
 
 					<div class="col-6">
 						<label for="">Reason for downtime</label>
-						<input   name="reason" type="text" class="form-control" required>
+						<select name="reason" class="form-control" required>
+							<option value="">Select a reason</option>
+							<option>Downtime Reasons</option>
+							<option>No Material</option>
+							<option>Bent Rod</option>
+							<option>Broken Tool</option>
+							<option>Collet</option>
+							<option>Change over/ Set up</option>
+							<option>Engineering</option>
+							<option>Holiday</option>
+							<option>Maintenance</option>
+							<option>Personnel</option>
+						</select>
 					</div>
 
 
