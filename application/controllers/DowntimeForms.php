@@ -27,6 +27,7 @@ class DowntimeForms extends CI_Controller
 
 		$this->form_validation->set_rules('start', 'Start Time', 'required');
 		$this->form_validation->set_rules('end', 'End Time', 'required');
+		$this->form_validation->set_rules('reason', 'Reason for downtime', 'required');
 
 		//style for alert
 		$this->form_validation->set_error_delimiters(

@@ -141,6 +141,7 @@
 								echo round((($total_usage - $downtime_total)/$total_usage)*100, 2) . "%";
 							}
 						?>
+
 					</div>
 
 				</div>
@@ -198,6 +199,7 @@
 						<th>Started</th>
 						<th>Ended</th>
 						<th>Hours</th>
+						<th>Reason</th>
 						</thead>
 						<tbody>
 						<?php
@@ -217,6 +219,7 @@
 									echo round($hours, 2);
 									?>
 								</td>
+								<td><?php echo $drecord['downtime_reason'] ?></td>
 							</tr>
 
 						<?php endforeach; ?>

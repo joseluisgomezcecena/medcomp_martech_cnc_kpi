@@ -42,11 +42,16 @@
 
 					<div class="col-3">
 						<label for="">From</label>
-						<input id="start-time" name="start" type="datetime-local" class="form-control">
+						<input id="start-time" name="start" type="datetime-local" class="form-control" required>
 					</div>
 					<div class="col-3">
 						<label for="">To</label>
-						<input id="end-time"  name="end" type="datetime-local" class="form-control">
+						<input id="end-time"  name="end" type="datetime-local" class="form-control" required>
+					</div>
+
+					<div class="col-3">
+						<label for="">Reason for downtime</label>
+						<input   name="reason" type="text" class="form-control" required>
 					</div>
 
 
