@@ -49,7 +49,7 @@
 						<input id="end-time"  name="end" type="datetime-local" class="form-control" required>
 					</div>
 
-					<div class="col-3">
+					<div class="col-6">
 						<label for="">Reason for downtime</label>
 						<input   name="reason" type="text" class="form-control" required>
 					</div>
