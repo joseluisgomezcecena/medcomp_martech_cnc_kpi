@@ -53,16 +53,9 @@
 						<label for="">Reason for downtime</label>
 						<select name="reason" class="form-control" required>
 							<option value="">Select a reason</option>
-							<option>Downtime Reasons</option>
-							<option>No Material</option>
-							<option>Bent Rod</option>
-							<option>Broken Tool</option>
-							<option>Collet</option>
-							<option>Change over/ Set up</option>
-							<option>Engineering</option>
-							<option>Holiday</option>
-							<option>Maintenance</option>
-							<option>Personnel</option>
+							<?php foreach ($downtimes as $downtime): ?>
+								<option><?= $downtime['dt_reason'] ?></option>
+							<?php endforeach; ?>
 						</select>
 					</div>
 

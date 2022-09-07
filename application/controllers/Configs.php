@@ -16,7 +16,7 @@ class Configs extends CI_Controller
 	public function downtimes_index()
 	{
 		$data['title'] = "App Configurations: Downtimes";
-
+		$data['downtimes'] = $this->ConfigModel->get_downtimes();
 		//load header, page & footer
 		$this->load->view('templates/header');
 		$this->load->view('config/downtimes/index', $data); //loading page and data
@@ -26,16 +26,12 @@ class Configs extends CI_Controller
 
 
 
-	public function create($id = NULL){
-		$data['title'] = "Create Production Form";
-		$data['machines'] = $this->MachineModel->get_machines();
-		$data['parts'] = $this->MachineModel->get_validated_parts($id);
-		$data['cnc'] = $id;
+	public function downtimes_create($id = NULL)
+	{
 
-		$this->form_validation->set_rules('pn', 'Part Number', 'required');
-		$this->form_validation->set_rules('start', 'Start Time', 'required');
-		$this->form_validation->set_rules('end', 'End Time', 'required');
-		$this->form_validation->set_rules('quantity', 'Produced Quantity', 'required');
+		$data['title'] = "Create Downtime";
+
+		$this->form_validation->set_rules('dt_reason', 'Downtime Reason or Name', 'required');
 
 		//style for alert
 		$this->form_validation->set_error_delimiters(
@@ -47,34 +43,90 @@ class Configs extends CI_Controller
 		{
 			//load header, page & footer
 			$this->load->view('templates/header');
-			$this->load->view('cnc_production_forms/create', $data); //loading page and data
+			$this->load->view('config/downtimes/create', $data); //loading page and data
 			$this->load->view('templates/footer');
 		}
 		else
 		{
 			//$this->FormModel->create_sup();
-			$this->ProductionFormModel->create();
+			$this->ConfigModel->create_downtime();
 
 			//session message
-			$this->session->set_flashdata('created', 'Production saved.');
+			$this->session->set_flashdata('created', 'Downtime saved.');
 
-			redirect(base_url() . 'register_production');
+			redirect(base_url() . 'config/downtimes/create');
 		}
 	}
 
 
 
 
-	public function get_insert_details()
-	{
-		// POST data
-		$postData = $this->input->post();
-		// load model
-		$this->load->model('MachineModel');
 
-		// get data
-		$data = $this->MachineModel->get_insert_details($postData);
-		echo json_encode($data);
+
+
+
+
+	public function downtimes_edit($id = NULL)
+	{
+
+		$data['title'] = "Edit Downtime";
+		$data['downtime'] = $this->ConfigModel->get_downtime($id);
+
+		$this->form_validation->set_rules('dt_reason', 'Downtime Reason or Name', 'required');
+		$this->form_validation->set_rules('dt_id', 'Downtime to edit', 'required');
+
+
+		//style for alert
+		$this->form_validation->set_error_delimiters(
+			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong class="uppercase"><bdi>Error</bdi></strong> &nbsp;',
+			'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+		);
+
+		if($this->form_validation->run() === FALSE)
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('config/downtimes/edit', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			//$this->FormModel->create_sup();
+			$this->ConfigModel->edit_downtime();
+
+			//session message
+			$this->session->set_flashdata('updated', 'Downtime updated.');
+
+			redirect(base_url() . 'config/downtimes');
+		}
+	}
+
+
+
+
+	public function downtimes_delete($id = NULL)
+	{
+		$data['title'] = "Delete Downtime";
+		$data['downtime'] = $this->ConfigModel->get_downtime($id);
+
+		$this->form_validation->set_rules('dt_id', 'Downtime to delete', 'required');
+		if($this->form_validation->run() === FALSE)
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('config/downtimes/delete', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			$this->ConfigModel->delete_downtime();
+
+			//session message
+			$this->session->set_flashdata('deleted', 'Downtime deleted.');
+
+			redirect(base_url() . 'config/downtimes');
+		}
+
 	}
 
 

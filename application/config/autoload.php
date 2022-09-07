@@ -147,4 +147,5 @@ $autoload['model'] =
 		'MachineModel',
 		'ProductionFormModel',
 		'DowntimeModel',
+		'ConfigModel',
 	);

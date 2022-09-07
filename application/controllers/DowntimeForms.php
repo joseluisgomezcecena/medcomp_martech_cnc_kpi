@@ -22,6 +22,7 @@ class DowntimeForms extends CI_Controller
 		$data['title'] = "Create Downtime Form";
 		$data['machines'] = $this->MachineModel->get_machines();
 		$data['parts'] = $this->MachineModel->get_validated_parts($id);
+		$data['downtimes'] = $this->ConfigModel->get_downtimes();
 		$data['cnc'] = $id;
 
 

@@ -11,66 +11,21 @@
 			</div>
 		</div>
 	</div>
-	<!-- /.col-lg-12 -->
 </div>
 
 
 
-<div style="margin-bottom: 200px;" class="container-fluid">
-	<!-- ============================================================== -->
-	<!-- Three charts -->
-	<!-- ============================================================== -->
-	<div class="row justify-content-center">
-
-		<div class="col-lg-12">
-			<?php if($show == true): ?>
-				<div class="alert alert-success alert-dismissible fade show" role="alert">
-					<strong class="uppercase"><bdi>IMPORTANT!</bdi></strong>
-					If no date range is selected, the report will show all records for Today <?php echo date("m/d/Y") ?> only.
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-
-				</div>
-			<?php endif; ?>
-
-			<div class="white-box analytics-info">
-				<h3 class="box-title">Search </h3>
-				<?php echo form_open( base_url() . 'reports/index', array('class' => 'form-horizontal')); ?>
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="form-group">
-							<label class="col-sm-12">Start Date</label>
-							<div class="col-sm-12">
-								<input type="date" class="form-control" id="datepicker" name="date_start" placeholder="Fecha de inicio" value="">
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="form-group">
-							<label class="col-sm-12">End Date</label>
-							<div class="col-sm-12">
-								<input type="date" class="form-control" id="datepicker" name="date_end" placeholder="Fecha de inicio" value="">
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="form-group">
-							<label class="col-sm-12">Click To Search</label>
-							<div class="col-sm-12">
-								<button class="btn btn-primary" type="submit" name="search"><i class="fa fa-search"></i> Search</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<?php echo form_close(); ?>
-			</div>
+<div class="page-breadcrumb">
+	<div class="row align-items-center">
+		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+			<h4 class="page-title"><a href="<?php echo base_url() ?>config/downtimes/create" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Add Downtime</a></h4>
 		</div>
 	</div>
 </div>
 
 
 
-
-<div style="margin-top: -450px" class="container-fluid">
+<div style="margin-top: 50px" class="container-fluid">
 	<!-- ============================================================== -->
 	<!-- Three charts -->
 	<!-- ============================================================== -->
@@ -79,147 +34,49 @@
 		<div class="col-lg-12">
 			<div class="white-box analytics-info">
 
-				<h3 class="box-title">OverAll Production</h3>
+				<h3 class="box-title">Downtime Reasons</h3>
 
-				<div class="row mb-5">
-					<div class="col-lg-3">
-						<h3 class="box-title text-primary">Goal</h3>
-						<?php
-						echo $totals['goal'];
-						?>
-					</div>
+				<?php if($this->session->flashdata('updated')): ?>
 
-					<div class="col-lg-3">
-						<h3 class="box-title text-primary">Produced</h3>
-						<?php
-						echo $totals['quantity'];
-						?>
-					</div>
-
-					<div class="col-lg-3">
-						<h3 class="box-title text-primary">Goal vs Produced</h3>
-						<div class="row">
-							<div class="col-lg-6">
-								<?php
-								if($totals['goal']== 0)
-								{
-									echo $percent = 0;
-								}else
-								{
-									echo $percent =  round(($totals['quantity']/$totals['goal'])*100, 2);
-								}
-								?>
-								%
-							</div>
-							<div class="col-lg-6">
-								<?php
-								if($percent >= 99){
-									echo "<img style='margin-top:-55px;' src='".base_url()."assets/img/yay.gif' width='100'>";
-								}
-								?>
-							</div>
-						</div>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong class="uppercase"><bdi>Success!</bdi></strong>
+						Your changes have been saved, thank you.
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
 					</div>
 
+				<?php endif; ?>
 
-					<div class="col-lg-3">
-						<h3 class="box-title text-primary">Machine % Usage</h3>
-						<?php
-						//echo $totals['quantity'];
+				<?php if($this->session->flashdata('deleted')): ?>
 
-						if($downtime_total== 0)
-						{
-							echo "N/A";
-						}
-						else
-						{
-							echo $total_usage . "-" . $downtime_total;
-							echo "/";
-							echo $total_usage;
-							echo " = ";
-							echo round((($total_usage - $downtime_total)/$total_usage)*100, 2) . "%";
-						}
-						?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong class="uppercase"><bdi>Success!</bdi></strong>
+						Your data has been deleted.
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
 					</div>
 
-				</div>
+				<?php endif; ?>
 
-
-
-
-
-				<h3 class="box-title">Production Records</h3>
 
 				<div class="table-responsive">
 
-					<table style="width: 100%" id="entries-list" class="table">
+					<table style="width: 100%" id="entries-list" class="table table-hover">
 						<thead>
-						<th>Machine</th>
-						<th>Part</th>
-						<th>Quantity</th>
-						<th>Goal</th>
-						<th>Started</th>
-						<th>Ended</th>
+						<th>Downtime ID</th>
+						<th>Downtime Reason</th>
+						<th>Actions</th>
 						</thead>
 						<tbody>
-						<?php
-						foreach ($records as $record):
-							?>
+						<?php foreach ($downtimes as $downtime) : ?>
 
 							<tr>
-								<td><?php echo $record['machine'] ?></td>
-								<td><?php echo $record['part'] ?></td>
-								<td><?php echo $record['quantity'] ?></td>
-								<td><?php echo $record['goal'] ?></td>
-								<td><?php echo $record['start'] ?></td>
-								<td><?php echo $record['end'] ?></td>
-							</tr>
-
-						<?php endforeach; ?>
-						</tbody>
-
-					</table>
-				</div>
-
-
-
-
-
-
-
-				<h3 class="box-title mb-5">Downtime Records</h3>
-
-				<div class="table-responsive">
-
-					<table style="width: 100%" id="downtime-list" class="table">
-						<thead>
-						<th>Machine</th>
-						<th>Started</th>
-						<th>Ended</th>
-						<th>Hours</th>
-						<th>Reason</th>
-						</thead>
-						<tbody>
-						<?php
-						foreach ($downtime_records as $drecord):
-							?>
-
-							<tr>
-								<td><?php echo $drecord['machine_downtime'] ?></td>
-								<td><?php echo $drecord['downtime_start'] ?></td>
-								<td><?php echo $drecord['downtime_end'] ?></td>
+								<td><?php echo $downtime['dt_id'] ?></td>
+								<td><?php echo $downtime['dt_reason'] ?></td>
 								<td>
-									<?php
-									$start = strtotime($drecord['downtime_start']);
-									$end = strtotime($drecord['downtime_end']);
-									$diff = $end - $start;
-									$hours = $diff / ( 60 * 60 );
-									echo round($hours, 2);
-									?>
+									<a href="<?php echo base_url() ?>config/downtimes/edit/<?php echo $downtime['dt_id'] ?>" class="btn btn-primary text-black-50">Edit&nbsp;<i class="fa fa-pencil-alt text-white"></i></a>
+									<a href="<?php echo base_url() ?>config/downtimes/delete/<?php echo $downtime['dt_id'] ?>" class="btn btn-danger text-black-50">Delete&nbsp;<i class="fa fa-trash-alt text-white"></i></a>
 								</td>
-								<td><?php echo $drecord['downtime_reason'] ?></td>
 							</tr>
 
 						<?php endforeach; ?>
@@ -227,15 +84,6 @@
 
 					</table>
 				</div>
-
-
-
-
-
-
-
-
-
 
 
 
