@@ -1,41 +1,33 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 /*
 | -------------------------------------------------------------------------
-| URI ROUTING
+| PROTECTED
 | -------------------------------------------------------------------------
 */
 
+//configuration
+$route['config'] = 'configs/index';
+$route['config/downtimes'] = 'configs/downtimes_index';
+$route['config/downtimes/create'] = 'configs/downtimes_create';
+$route['config/downtimes/edit/(:any)'] = 'configs/downtimes_edit/$1';
+$route['config/downtimes/delete/(:any)'] = 'configs/downtimes_delete/$1';
 
+/*
+| -------------------------------------------------------------------------
+| PUBLIC
+| -------------------------------------------------------------------------
+*/
 
-
-//forms
+//production forms
 $route['register_production'] = 'productionforms/index';
 $route['entry_form/(:any)'] = 'productionforms/create/$1';
 
+//downtime forms
 $route['register_downtime'] = 'downtimeforms/index';
 $route['downtime_form/(:any)'] = 'downtimeforms/create/$1';
-
-
-$route['request/new'] = 'forms/create';
-$route['request/sup/(:any)'] = 'forms/request/$1';
-
-
-//toolcrib
-$route['toolcrib/pending'] = 'toolcribs/index';
-$route['toolcrib/byplant/(:any)'] = 'toolcribs/byplant/$1';
-$route['toolcrib/respond/(:any)'] = 'toolcribs/respond/$1';
-$route['toolcrib/deliver/(:any)'] = 'toolcribs/deliver/$1';
-
-
-//engineering
-$route['engineering/create'] = 'engineeringforms/create';
-$route['engineering/update/(:any)'] = 'engineeringforms/update/$1'; //actualizar la revision actual.
-$route['engineering/new/(:any)'] = 'engineeringforms/newrevision/$1'; //nueva revision basada en SUP recibido como parametro.
-$route['engineering/index'] = 'engineeringforms/index';
-
-
 
 //reports
 $route['reports'] = 'reports/index';
@@ -43,11 +35,12 @@ $route['reports/deliveries'] = 'reports/deliveries';
 $route['reports/revisions'] = 'reports/revisions';
 
 
-
 //users
 $route['users/register'] = 'users/register';
 $route['users/login'] = 'users/login';
 $route['users/profile'] = 'users/profile';
+
+
 
 //pages
 $route['(:any)'] = 'pages/view/$1';

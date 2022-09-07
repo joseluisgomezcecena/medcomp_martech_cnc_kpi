@@ -269,14 +269,15 @@
 							<span class="hide-menu">Start</span>
 						</a>
 					</li>
-					<!--
+
 					<li class="sidebar-item">
-						<a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url()?>request_mold"
+						<a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url()?>config"
 						   aria-expanded="false">
-							<i class="fa fa-edit" aria-hidden="true"></i>
-							<span class="hide-menu">Pedir Insertos</span>
+							<i class="fa fa-cog" aria-hidden="true"></i>
+							<span class="hide-menu">Configure App</span>
 						</a>
 					</li>
+					<!--
 					<li class="sidebar-item">
 						<a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url() ?>toolcrib/pending"
 						   aria-expanded="false">
