@@ -176,8 +176,8 @@
 								<td><?php echo $record['start'] ?></td>
 								<td>
 									<?php echo $record['end'] ?>&nbsp;
-									<a href="<?php echo base_url() ?>config/records/edit/<?php echo $record['id'] ?>">Edit</a>&nbsp;
-									<a href="<?php echo base_url() ?>config/records/delete/<?php echo $record['id'] ?>">Delete</a>
+									<a href="<?php echo base_url() ?>register_production/edit/<?php echo $record['id'] ?>">Edit</a>&nbsp;
+									<a href="<?php echo base_url() ?>register_production/delete/<?php echo $record['id'] ?>">Delete</a>
 								</td>
 							</tr>
 
@@ -225,8 +225,8 @@
 								</td>
 								<td>
 									<?php echo $drecord['downtime_reason'] ?>&nbsp;
-									<a href="<?php echo base_url() ?>config/downtime_records/edit/<?php echo $drecord['downtime_id'] ?>">Edit</a>&nbsp;
-									<a href="<?php echo base_url() ?>config/downtime_records/delete/<?php echo $drecord['downtime_id'] ?>">Delete</a>
+									<a href="<?php echo base_url() ?>register_production/edit/<?php echo $drecord['downtime_id'] ?>">Edit</a>&nbsp;
+									<a href="<?php echo base_url() ?>register_production/delete/<?php echo $drecord['downtime_id'] ?>">Delete</a>
 								</td>
 							</tr>
 
