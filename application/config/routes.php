@@ -14,6 +14,11 @@ $route['config/downtimes'] = 'configs/downtimes_index';
 $route['config/downtimes/create'] = 'configs/downtimes_create';
 $route['config/downtimes/edit/(:any)'] = 'configs/downtimes_edit/$1';
 $route['config/downtimes/delete/(:any)'] = 'configs/downtimes_delete/$1';
+$route['config/records/edit/(:any)'] = 'configs/records_edit/$1';
+$route['config/records/delete/(:any)'] = 'configs/records_delete/$1';
+$route['config/downtime_records/edit/(:any)'] = 'configs/downtime_records_edit/$1';
+$route['config/downtime_records/delete/(:any)'] = 'configs/downtime_records_delete/$1';
+
 
 /*
 | -------------------------------------------------------------------------

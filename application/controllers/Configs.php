@@ -61,11 +61,6 @@ class Configs extends CI_Controller
 
 
 
-
-
-
-
-
 	public function downtimes_edit($id = NULL)
 	{
 
@@ -129,5 +124,42 @@ class Configs extends CI_Controller
 
 	}
 
+
+
+	public function records_edit($id = NULL)
+	{
+		$data['title'] = "Edit Record";
+		$data['record'] = $this->ConfigModel->get_record($id);
+
+		$this->form_validation->set_rules('pn', 'Part Number', 'required');
+		$this->form_validation->set_rules('start', 'Start Time', 'required');
+		$this->form_validation->set_rules('end', 'End Time', 'required');
+		$this->form_validation->set_rules('quantity', 'Produced Quantity', 'required');
+
+
+		//style for alert
+		$this->form_validation->set_error_delimiters(
+			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong class="uppercase"><bdi>Error</bdi></strong> &nbsp;',
+			'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+		);
+
+		if($this->form_validation->run() === FALSE)
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('config/records/edit', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			//$this->FormModel->create_sup();
+			$this->ConfigModel->edit_record();
+
+			//session message
+			$this->session->set_flashdata('updated', 'Record updated.');
+
+			redirect(base_url() . 'config/records');
+		}
+	}
 
 }

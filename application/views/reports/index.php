@@ -174,7 +174,11 @@
 								<td><?php echo $record['quantity'] ?></td>
 								<td><?php echo $record['goal'] ?></td>
 								<td><?php echo $record['start'] ?></td>
-								<td><?php echo $record['end'] ?></td>
+								<td>
+									<?php echo $record['end'] ?>&nbsp;
+									<a href="<?php echo base_url() ?>config/records/edit/<?php echo $record['id'] ?>">Edit</a>&nbsp;
+									<a href="<?php echo base_url() ?>config/records/delete/<?php echo $record['id'] ?>">Delete</a>
+								</td>
 							</tr>
 
 						<?php endforeach; ?>
@@ -219,7 +223,11 @@
 									echo round($hours, 2);
 									?>
 								</td>
-								<td><?php echo $drecord['downtime_reason'] ?></td>
+								<td>
+									<?php echo $drecord['downtime_reason'] ?>&nbsp;
+									<a href="<?php echo base_url() ?>config/downtime_records/edit/<?php echo $drecord['downtime_id'] ?>">Edit</a>&nbsp;
+									<a href="<?php echo base_url() ?>config/downtime_records/delete/<?php echo $drecord['downtime_id'] ?>">Delete</a>
+								</td>
 							</tr>
 
 						<?php endforeach; ?>
