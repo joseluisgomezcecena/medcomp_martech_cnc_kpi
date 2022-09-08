@@ -26,4 +26,38 @@ class ProductionFormModel extends CI_Model{
 	}
 
 
+
+
+	public function get_records($id = FALSE)
+	{
+		$query = $this->db->get_where('records', array('id' => $id));
+		return $query->row_array();
+	}
+
+
+
+	public function update($id)
+	{
+		$goal = $this->input->post('goal');
+		$data = array(
+			'machine' => $this->input->post('machine'),
+			'part' => $this->input->post('pn'),
+			'quantity' => $this->input->post('quantity'),
+			'start' => $this->input->post('start'),
+			'end' => $this->input->post('end'),
+			'goal'=>$goal,
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('records', $data);
+
+	}
+
+
+	public function delete($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('records');
+	}
+
 }
