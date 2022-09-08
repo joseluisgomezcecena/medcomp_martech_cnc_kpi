@@ -31,6 +31,7 @@ $route['register_downtime/delete/(:any)'] = 'downtimeforms/delete/$1';
 | -------------------------------------------------------------------------
 */
 
+
 //production forms
 $route['register_production'] = 'productionforms/index';
 $route['entry_form/(:any)'] = 'productionforms/create/$1';
@@ -38,6 +39,7 @@ $route['entry_form/(:any)'] = 'productionforms/create/$1';
 //downtime forms
 $route['register_downtime'] = 'downtimeforms/index';
 $route['downtime_form/(:any)'] = 'downtimeforms/create/$1';
+
 
 //reports
 $route['reports'] = 'reports/index';
