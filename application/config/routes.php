@@ -27,7 +27,7 @@ $route['register_production/edit/(:any)'] = 'productionforms/edit/$1';
 $route['register_production/delete/(:any)'] = 'productionforms/delete/$1';
 
 //protected downtime forms.
-$route['register_downtime/edit/(:any)'] = 'downtimeforms/update/$1';
+$route['register_downtime/edit/(:any)'] = 'downtimeforms/edit/$1';
 $route['register_downtime/delete/(:any)'] = 'downtimeforms/delete/$1';
 
 

@@ -22,6 +22,11 @@ class DowntimeModel extends CI_Model{
 	}
 
 
+	public function edit()
+	{
+
+	}
+
 
 
 }

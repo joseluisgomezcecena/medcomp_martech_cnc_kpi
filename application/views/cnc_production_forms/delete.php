@@ -1,7 +1,7 @@
 <div class="page-breadcrumb bg-white">
 	<div class="row align-items-center">
 		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-			<h4 class="page-title">Update Production</h4>
+			<h4 class="page-title">Delete Production</h4>
 		</div>
 	</div>
 	<!-- /.col-lg-12 -->
@@ -34,7 +34,7 @@
 			<div class="white-box analytics-info">
 				<h3 class="box-title">CNC Production Registry</h3>
 
-				<?php echo form_open(base_url() . 'register_production/edit/' . $record['id'])?>
+				<?php echo form_open(base_url() . 'register_production/delete/' . $record['id'])?>
 
 				<input type="hidden" name="machine" value="<?= $record['machine'] ?>">
 				<input type="hidden" name="id" value="<?= $record['id'] ?>">
@@ -43,7 +43,7 @@
 
 					<div class="col-3">
 						<label for="">Part Number for <?= $record['machine'] ?></label>
-						<select name="pn" id="pn" class="form-control" onchange="searchnow()" required>
+						<select name="pn" id="pn" class="form-control" onchange="searchnow()" disabled>
 							<option value="">Select Part Number</option>
 							<?php foreach ($parts as $part): ?>
 								<option value="<?php echo $part['COL1'] ?>" <?php if($record['part'] == $part['COL1']){echo "selected";}else{echo "";} ?>><?php echo $part['COL1'] . " | " . $part['COL2'] ?></option>
@@ -56,27 +56,27 @@
 					</div>
 					<div class="col-3">
 						<label for="">From</label>
-						<input id="start-time" name="start" type="datetime-local"  value="<?php echo $record['start'] ?>" class="form-control">
+						<input id="start-time" name="start" type="datetime-local"  value="<?php echo $record['start'] ?>" class="form-control" disabled>
 					</div>
 					<div class="col-3">
 						<label for="">To</label>
-						<input id="end-time"  name="end" type="datetime-local" value="<?php echo $record['end'] ?>"  class="form-control">
+						<input id="end-time"  name="end" type="datetime-local" value="<?php echo $record['end'] ?>"  class="form-control" disabled>
 					</div>
 
 					<input type="hidden" id="total-hours" class="form-control">
 
 					<div class="col-3 mt-5">
 						<label for="">Produced Parts</label>
-						<input type="number" min="0" name="quantity" value="<?php echo $record['quantity'] ?>"  class="form-control">
+						<input type="number" min="0" name="quantity" value="<?php echo $record['quantity'] ?>"  class="form-control" disabled>
 					</div>
 
 					<div class="col-3 mt-5">
 						<label for="">Optimum Value</label>
-						<input type="number" id="goal" name="goal" min="0" class="form-control" value="<?php echo $record['goal'] ?>"  readonly>
+						<input type="number" id="goal" name="goal" min="0" class="form-control" value="<?php echo $record['goal'] ?>"  disabled>
 					</div>
 
 					<div class="col-12 mt-5">
-						<input type="submit" class="btn btn-outline-primary" value="Update Record">
+						<input type="submit" class="btn btn-danger text-white" value="Delete Record">
 					</div>
 
 				</div>

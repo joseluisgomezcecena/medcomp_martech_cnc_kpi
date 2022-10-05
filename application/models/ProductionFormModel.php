@@ -56,8 +56,14 @@ class ProductionFormModel extends CI_Model{
 
 	public function delete($id)
 	{
-		$this->db->where('id', $id);
-		$this->db->delete('records');
+		//$this->db->where('id', $id);
+		//$this->db->delete('records');
+
+		$this->db->delete('records', array('id' => $id));
+		$last_query = $this->db->last_query();
+		print_r($last_query);
+
+
 	}
 
 }
