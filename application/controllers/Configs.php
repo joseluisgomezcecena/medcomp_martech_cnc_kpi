@@ -171,14 +171,77 @@ class Configs extends CI_Controller
 		}
 	}
 
+
+
+
 	public function parts_edit($id = NULL)
 	{
+		$data['title'] = "Create Part";
+		$data['machines'] = $this->ConfigModel->get_machines();
+		$data['part'] = $this->ConfigModel->get_part($id);
 
+		$this->form_validation->set_rules('pph', 'Parts Per Hour or PPH', 'required');
+		$this->form_validation->set_rules('part_no', 'Part Number', 'required');
+		$this->form_validation->set_rules('description', 'Part Description', 'required');
+		$this->form_validation->set_rules('machine', 'Machine name/Number.', 'required');
+
+		//style for alert
+		$this->form_validation->set_error_delimiters(
+			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong class="uppercase"><bdi>Error</bdi></strong> &nbsp;',
+			'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+		);
+
+		if($this->form_validation->run() === FALSE)
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('config/parts/update', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			//$this->FormModel->create_sup();
+			$this->ConfigModel->edit_part();
+
+			//session message
+			$this->session->set_flashdata('updated', 'Part saved.');
+
+			redirect(base_url() . 'config/parts');
+		}
 	}
 
 
 	public function parts_delete($id = NULL)
 	{
+		$data['title'] = "Delete Part";
+		$data['machines'] = $this->ConfigModel->get_machines();
+		$data['part'] = $this->ConfigModel->get_part($id);
+
+		$this->form_validation->set_rules('id', 'Parts or Part to be deleted.', 'required');
+
+		//style for alert
+		$this->form_validation->set_error_delimiters(
+			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong class="uppercase"><bdi>Error</bdi></strong> &nbsp;',
+			'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+		);
+
+		if($this->form_validation->run() === FALSE)
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('config/parts/delete', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			//$this->FormModel->create_sup();
+			$this->ConfigModel->delete_part();
+
+			//session message
+			$this->session->set_flashdata('deleted', 'Part saved.');
+
+			redirect(base_url() . 'config/parts');
+		}
 
 	}
 

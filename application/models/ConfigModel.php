@@ -84,4 +84,21 @@ class ConfigModel extends CI_Model{
 		return $query->row_array();
 	}
 
+	public function edit_part()
+	{
+		$data = array(
+			'COL4' => $this->input->post('pph'),
+			'COL1' => $this->input->post('part_no'),
+			'COL2' => $this->input->post('description'),
+			'COL9' => $this->input->post('machine'),
+		);
+
+		$this->db->update('validated_parts', $data, array('id' => $this->input->post('id')));
+	}
+
+	public function delete_part()
+	{
+		$this->db->delete('validated_parts', array('id' => $this->input->post('id')));
+	}
+
 }
