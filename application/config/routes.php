@@ -23,12 +23,12 @@ $route['config/parts/delete/(:any)'] = 'configs/parts_delete/$1';
 
 
 //protected production forms.
-$route['register_production/edit/(:any)'] = 'productionforms/edit/$1';
-$route['register_production/delete/(:any)'] = 'productionforms/delete/$1';
+$route['register_production/edit/(:any)'] = 'adminproductionforms/edit/$1';
+$route['register_production/delete/(:any)'] = 'adminproductionforms/delete/$1';
 
 //protected downtime forms.
-$route['register_downtime/edit/(:any)'] = 'downtimeforms/edit/$1';
-$route['register_downtime/delete/(:any)'] = 'downtimeforms/delete/$1';
+$route['register_downtime/edit/(:any)'] = 'admindowntimeforms/edit/$1';
+$route['register_downtime/delete/(:any)'] = 'admindowntimeforms/delete/$1';
 
 
 /*
