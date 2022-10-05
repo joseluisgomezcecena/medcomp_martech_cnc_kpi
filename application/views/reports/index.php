@@ -225,8 +225,8 @@
 								</td>
 								<td>
 									<?php echo $drecord['downtime_reason'] ?>&nbsp;
-									<a href="<?php echo base_url() ?>register_production/edit/<?php echo $drecord['downtime_id'] ?>">Edit</a>&nbsp;
-									<a href="<?php echo base_url() ?>register_production/delete/<?php echo $drecord['downtime_id'] ?>">Delete</a>
+									<a href="<?php echo base_url() ?>register_downtime/edit/<?php echo $drecord['downtime_id'] ?>">Edit</a>&nbsp;
+									<a href="<?php echo base_url() ?>register_downtime/delete/<?php echo $drecord['downtime_id'] ?>">Delete</a>
 								</td>
 							</tr>
 

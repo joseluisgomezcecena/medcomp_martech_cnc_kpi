@@ -33,7 +33,7 @@
 			<div class="white-box analytics-info">
 				<h3 class="box-title">CNC Downtime Registry</h3>
 
-				<?php echo form_open( base_url() . 'register_downtime/edit/' . $cnc)?>
+				<?php echo form_open( base_url() . 'register_downtime/delete/' . $cnc)?>
 
 				<input type="hidden" name="machine" value="<?= $cnc ?>">
 
@@ -61,7 +61,7 @@
 
 
 					<div class="col-12 mt-5">
-						<input type="submit" class="btn btn-outline-danger" value="Save Downtime">
+						<input type="submit" class="btn btn-danger text-white" value="Delete Downtime">
 					</div>
 
 				</div>
