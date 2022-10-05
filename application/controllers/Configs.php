@@ -1,6 +1,6 @@
 <?php
 
-class Configs extends CI_Controller
+class Configs extends MY_Controller
 {
 	public function index()
 	{
