@@ -57,11 +57,13 @@ class ProductionForms extends CI_Controller
 
 
 
-	public function update($id = NULL){
+	public function update($id = NULL, $cnc = NULL){
 		$data['title'] = "Update Production Form";
-		$data['machines'] = $this->MachineModel->get_machines();
-		$data['parts'] = $this->MachineModel->get_validated_parts($id);
-		$data['cnc'] = $id;
+		$data['record'] = $this->ProductionFormModel->get_record($id);
+
+		$data['machine_id'] = $data['record']['machine'];
+		$data['parts'] = $this->MachineModel->get_validated_parts($data['machine_id']);
+		//$data['cnc'] = $id;
 
 		$this->form_validation->set_rules('id', 'Record to edit', 'required');
 		$this->form_validation->set_rules('pn', 'Part Number', 'required');
@@ -88,7 +90,7 @@ class ProductionForms extends CI_Controller
 			$this->ProductionFormModel->update();
 
 			//session message
-			$this->session->set_flashdata('created', 'Production saved.');
+			$this->session->set_flashdata('updated', 'Production saved.');
 
 			redirect(base_url() . 'register_production');
 		}

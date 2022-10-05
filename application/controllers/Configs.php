@@ -126,5 +126,10 @@ class Configs extends CI_Controller
 
 
 
+	public function machines_index()
+	{
+
+	}
+
 
 }

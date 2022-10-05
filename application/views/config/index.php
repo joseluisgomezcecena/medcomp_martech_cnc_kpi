@@ -59,6 +59,18 @@
 						</div>
 
 
+
+						<div class="col-lg-4">
+							<div class="col-lg-12 card shadow border">
+								<div class="card-body">
+									<h3 class="card-title text-center">Parts</h3>
+									<p class="mt-5 mb-5">Click on the button to configure parts.</p>
+									<a class="btn btn-outline-warning text-center" href="<?php echo base_url() ?>config/parts">Configure Parts</a>
+								</div>
+							</div>
+						</div>
+
+
 				</div>
 
 

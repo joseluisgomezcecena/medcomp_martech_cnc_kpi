@@ -28,7 +28,7 @@ class ProductionFormModel extends CI_Model{
 
 
 
-	public function get_records($id = FALSE)
+	public function get_record($id = FALSE)
 	{
 		$query = $this->db->get_where('records', array('id' => $id));
 		return $query->row_array();
