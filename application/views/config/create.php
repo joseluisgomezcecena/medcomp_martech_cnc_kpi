@@ -1,7 +1,7 @@
 <div class="page-breadcrumb bg-danger text-white">
 	<div class="row align-items-center">
 		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-			<h4 class="page-title">Register Downtime</h4>
+			<h4 class="page-title">Register Downtime !!!</h4>
 		</div>
 		<!--
 		<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -31,7 +31,7 @@
 
 		<div class="col-lg-12">
 			<div class="white-box analytics-info">
-				<h3 class="box-title">CNC Downtime Registry</h3>
+				<h3 class="box-title">CNC Downtime Registry !!</h3>
 
 				<?php echo form_open( base_url() . 'downtime_form/' . $cnc)?>
 

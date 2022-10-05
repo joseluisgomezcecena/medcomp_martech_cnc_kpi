@@ -50,4 +50,38 @@ class ConfigModel extends CI_Model{
 		$this->db->delete('downtime_reasons', array('dt_id' => $this->input->post('dt_id')));
 	}
 
+
+	public function get_machines()
+	{
+		$this->db->order_by('machine_id', 'ASC');
+		$query = $this->db->get('machines');
+		return $query->result_array();
+	}
+
+
+	public function get_parts()
+	{
+		$this->db->order_by('id', 'ASC');
+		$query = $this->db->get('validated_parts');
+		return $query->result_array();
+	}
+
+	public function create_part()
+	{
+		$data = array(
+			'COL4' => $this->input->post('pph'),
+			'COL1' => $this->input->post('part_no'),
+			'COL2' => $this->input->post('description'),
+			'COL9' => $this->input->post('machine'),
+		);
+
+		$this->db->insert('validated_parts', $data);
+	}
+
+	public function get_part($id)
+	{
+		$query = $this->db->get_where('validated_parts', array('id' => $id));
+		return $query->row_array();
+	}
+
 }

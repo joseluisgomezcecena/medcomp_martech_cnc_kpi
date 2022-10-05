@@ -126,7 +126,58 @@ class Configs extends CI_Controller
 
 
 
-	public function machines_index()
+	public function parts_index()
+	{
+		$data['title'] = "App Configurations: Parts";
+		$data['parts'] = $this->ConfigModel->get_parts();
+		//load header, page & footer
+		$this->load->view('templates/header');
+		$this->load->view('config/parts/index', $data); //loading page and data
+		$this->load->view('templates/footer');
+	}
+
+	public function parts_create()
+	{
+		$data['title'] = "Create Part";
+		$data['machines'] = $this->ConfigModel->get_machines();
+
+		$this->form_validation->set_rules('pph', 'Parts Per Hour or PPH', 'required');
+		$this->form_validation->set_rules('part_no', 'Part Number', 'required');
+		$this->form_validation->set_rules('description', 'Part Description', 'required');
+		$this->form_validation->set_rules('machine', 'Machine name/Number.', 'required');
+
+		//style for alert
+		$this->form_validation->set_error_delimiters(
+			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong class="uppercase"><bdi>Error</bdi></strong> &nbsp;',
+			'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+		);
+
+		if($this->form_validation->run() === FALSE)
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('config/parts/create', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			//$this->FormModel->create_sup();
+			$this->ConfigModel->create_part();
+
+			//session message
+			$this->session->set_flashdata('created', 'Part saved.');
+
+			redirect(base_url() . 'config/parts/create');
+		}
+	}
+
+	public function parts_edit($id = NULL)
+	{
+
+	}
+
+
+	public function parts_delete($id = NULL)
 	{
 
 	}
