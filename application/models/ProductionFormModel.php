@@ -36,7 +36,7 @@ class ProductionFormModel extends CI_Model{
 
 
 
-	public function update($id)
+	public function edit($id)
 	{
 		$goal = $this->input->post('goal');
 		$data = array(

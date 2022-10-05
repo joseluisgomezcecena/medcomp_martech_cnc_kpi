@@ -23,7 +23,7 @@ $route['config/parts/delete/(:any)'] = 'configs/parts_delete/$1';
 
 
 //protected production forms.
-$route['register_production/edit/(:any)'] = 'productionforms/update/$1';
+$route['register_production/edit/(:any)'] = 'productionforms/edit/$1';
 $route['register_production/delete/(:any)'] = 'productionforms/delete/$1';
 
 //protected downtime forms.

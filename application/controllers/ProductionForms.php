@@ -57,7 +57,7 @@ class ProductionForms extends CI_Controller
 
 
 
-	public function update($id = NULL, $cnc = NULL){
+	public function edit($id = NULL, $cnc = NULL){
 		$data['title'] = "Update Production Form";
 		$data['record'] = $this->ProductionFormModel->get_record($id);
 
@@ -87,7 +87,7 @@ class ProductionForms extends CI_Controller
 		else
 		{
 			//$this->FormModel->create_sup();
-			$this->ProductionFormModel->update();
+			$this->ProductionFormModel->edit($id);
 
 			//session message
 			$this->session->set_flashdata('updated', 'Production saved.');
