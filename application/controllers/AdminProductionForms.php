@@ -1,6 +1,6 @@
 <?php
 
-class ProductionForms extends MY_Controller
+class AdminProductionForms extends MY_Controller
 {
 	public function index()
 	{
