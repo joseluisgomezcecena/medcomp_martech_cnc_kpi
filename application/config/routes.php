@@ -15,6 +15,10 @@ $route['config/downtimes/create'] = 'configs/downtimes_create';
 $route['config/downtimes/edit/(:any)'] = 'configs/downtimes_edit/$1';
 $route['config/downtimes/delete/(:any)'] = 'configs/downtimes_delete/$1';
 
+$route['config/parts'] = 'configs/parts_index';
+$route['config/parts/create'] = 'configs/parts_create';
+$route['config/parts/edit/(:any)'] = 'configs/parts_edit/$1';
+$route['config/parts/delete/(:any)'] = 'configs/parts_delete/$1';
 
 //protected production forms.
 $route['register_production/edit/(:any)'] = 'productionforms/update/$1';
