@@ -57,6 +57,8 @@ class Users extends CI_Controller{
 
 		if($this->form_validation->run() === FALSE)
 		{
+
+
 			$this->load->view('templates/header');
 			$this->load->view('users/login', $data);
 			$this->load->view('templates/footer');
@@ -86,7 +88,7 @@ class Users extends CI_Controller{
 
 				//session message
 				$this->session->set_flashdata('login_success', 'You are now logged in.');
-				redirect(base_url() . 'posts');
+				redirect(base_url());
 			}
 			else
 			{

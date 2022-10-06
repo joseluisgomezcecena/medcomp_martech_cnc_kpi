@@ -273,10 +273,41 @@
 					<li class="sidebar-item">
 						<a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url()?>config"
 						   aria-expanded="false">
+							<i class="fa fa-user" aria-hidden="true"></i>
+							<span class="hide-menu">
+								<?php
+								if(isset($this->session->userdata['logged_in'])){
+									echo "<b style='color: #0b5ed7'>Admin User.</b>";
+								}else{
+									echo "Normal User";
+								}
+								?>
+							</span>
+						</a>
+					</li>
+
+
+
+					<li class="sidebar-item">
+						<a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url()?>config"
+						   aria-expanded="false">
 							<i class="fa fa-cog" aria-hidden="true"></i>
 							<span class="hide-menu">Configure App</span>
 						</a>
 					</li>
+
+					<?php if(isset($this->session->userdata['logged_in'])):?>
+						<li class="sidebar-item">
+							<a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url()?>users/logout"
+							   aria-expanded="false">
+								<i class="fa fa-arrow-left" aria-hidden="true"></i>
+								<span class="hide-menu">
+									Logout.
+								</span>
+							</a>
+						</li>
+					<?php endif; ?>
+
 					<!--
 					<li class="sidebar-item">
 						<a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url() ?>toolcrib/pending"

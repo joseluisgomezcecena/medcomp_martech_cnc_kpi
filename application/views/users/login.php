@@ -15,6 +15,16 @@
 	<!-- ============================================================== -->
 	<div class="row justify-content-center">
 
+		<?php if($this->session->flashdata('login_failed')): ?>
+
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong class="uppercase"><bdi>Error!</bdi></strong>
+				<?php echo  $this->session->flashdata('login_failed'); ?>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+			</div>
+
+		<?php endif; ?>
 		<div class="col-lg-12">
 			<div class="white-box analytics-info">
 				<h3 class="box-title">Please login to continue.</h3>
