@@ -26,8 +26,8 @@ date_default_timezone_set('America/Tijuana');
 |
 */
 //$config['base_url'] = 'http://mxmtsvrandon1/cnc';
-$config['base_url'] = 'http://localhost/cnc_kpi';
-
+//$config['base_url'] = 'http://localhost/cnc_kpi';
+  $config['base_url'] = 'http://usmdsvrandon01/cnc';// @ 192.168.1.141
 /*
 |--------------------------------------------------------------------------
 | Index File
