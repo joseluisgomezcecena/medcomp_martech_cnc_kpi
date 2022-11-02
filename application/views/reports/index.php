@@ -114,7 +114,7 @@
 							<div class="col-lg-6">
 								<?php
 								if($percent >= 99){
-									echo "<img style='margin-top:-55px;' src='".base_url()."assets/img/yay.gif' width='100'>";
+									//echo "<img style='margin-top:-55px;' src='".base_url()."assets/img/yay.gif' width='100'>";
 								}
 								?>
 							</div>
